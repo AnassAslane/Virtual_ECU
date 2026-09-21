@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/papasmurf/Work/Virtual_ECU/build",
+  "command": "/usr/bin/c++  -I/home/papasmurf/Work/Virtual_ECU/include -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vecu.dir/src/main.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/main.cpp",
+  "file": "/home/papasmurf/Work/Virtual_ECU/src/main.cpp",
+  "output": "CMakeFiles/vecu.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/papasmurf/Work/Virtual_ECU/build",
+  "command": "/usr/bin/c++  -I/home/papasmurf/Work/Virtual_ECU/include -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vecu.dir/src/can.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/can.cpp",
+  "file": "/home/papasmurf/Work/Virtual_ECU/src/can.cpp",
+  "output": "CMakeFiles/vecu.dir/src/can.cpp.o"
+},
+{
+  "directory": "/home/papasmurf/Work/Virtual_ECU/build",
+  "command": "/usr/bin/c++  -I/home/papasmurf/Work/Virtual_ECU/include -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vecu.dir/src/scheduler.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/scheduler.cpp",
+  "file": "/home/papasmurf/Work/Virtual_ECU/src/scheduler.cpp",
+  "output": "CMakeFiles/vecu.dir/src/scheduler.cpp.o"
+},
+{
+  "directory": "/home/papasmurf/Work/Virtual_ECU/build",
+  "command": "/usr/bin/c++  -I/home/papasmurf/Work/Virtual_ECU/include -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vecu.dir/src/diagnostics.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/diagnostics.cpp",
+  "file": "/home/papasmurf/Work/Virtual_ECU/src/diagnostics.cpp",
+  "output": "CMakeFiles/vecu.dir/src/diagnostics.cpp.o"
+},
+{
+  "directory": "/home/papasmurf/Work/Virtual_ECU/build",
+  "command": "/usr/bin/c++  -I/home/papasmurf/Work/Virtual_ECU/include -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vecu.dir/src/safety.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/safety.cpp",
+  "file": "/home/papasmurf/Work/Virtual_ECU/src/safety.cpp",
+  "output": "CMakeFiles/vecu.dir/src/safety.cpp.o"
+},
+{
+  "directory": "/home/papasmurf/Work/Virtual_ECU/build",
+  "command": "/usr/bin/c++  -I/home/papasmurf/Work/Virtual_ECU/include -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vecu.dir/src/watchdog.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/watchdog.cpp",
+  "file": "/home/papasmurf/Work/Virtual_ECU/src/watchdog.cpp",
+  "output": "CMakeFiles/vecu.dir/src/watchdog.cpp.o"
+}
+]
