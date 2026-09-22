@@ -97,10 +97,24 @@ CMakeFiles/vecu.dir/src/can.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vecu.dir/src/can.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/papasmurf/Work/Virtual_ECU/src/can.cpp -o CMakeFiles/vecu.dir/src/can.cpp.s
 
+CMakeFiles/vecu.dir/src/signal_manager.cpp.o: CMakeFiles/vecu.dir/flags.make
+CMakeFiles/vecu.dir/src/signal_manager.cpp.o: /home/papasmurf/Work/Virtual_ECU/src/signal_manager.cpp
+CMakeFiles/vecu.dir/src/signal_manager.cpp.o: CMakeFiles/vecu.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/vecu.dir/src/signal_manager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vecu.dir/src/signal_manager.cpp.o -MF CMakeFiles/vecu.dir/src/signal_manager.cpp.o.d -o CMakeFiles/vecu.dir/src/signal_manager.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/signal_manager.cpp
+
+CMakeFiles/vecu.dir/src/signal_manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vecu.dir/src/signal_manager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/papasmurf/Work/Virtual_ECU/src/signal_manager.cpp > CMakeFiles/vecu.dir/src/signal_manager.cpp.i
+
+CMakeFiles/vecu.dir/src/signal_manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vecu.dir/src/signal_manager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/papasmurf/Work/Virtual_ECU/src/signal_manager.cpp -o CMakeFiles/vecu.dir/src/signal_manager.cpp.s
+
 CMakeFiles/vecu.dir/src/scheduler.cpp.o: CMakeFiles/vecu.dir/flags.make
 CMakeFiles/vecu.dir/src/scheduler.cpp.o: /home/papasmurf/Work/Virtual_ECU/src/scheduler.cpp
 CMakeFiles/vecu.dir/src/scheduler.cpp.o: CMakeFiles/vecu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/vecu.dir/src/scheduler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/vecu.dir/src/scheduler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vecu.dir/src/scheduler.cpp.o -MF CMakeFiles/vecu.dir/src/scheduler.cpp.o.d -o CMakeFiles/vecu.dir/src/scheduler.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/scheduler.cpp
 
 CMakeFiles/vecu.dir/src/scheduler.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/vecu.dir/src/scheduler.cpp.s: cmake_force
 CMakeFiles/vecu.dir/src/diagnostics.cpp.o: CMakeFiles/vecu.dir/flags.make
 CMakeFiles/vecu.dir/src/diagnostics.cpp.o: /home/papasmurf/Work/Virtual_ECU/src/diagnostics.cpp
 CMakeFiles/vecu.dir/src/diagnostics.cpp.o: CMakeFiles/vecu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/vecu.dir/src/diagnostics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/vecu.dir/src/diagnostics.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vecu.dir/src/diagnostics.cpp.o -MF CMakeFiles/vecu.dir/src/diagnostics.cpp.o.d -o CMakeFiles/vecu.dir/src/diagnostics.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/diagnostics.cpp
 
 CMakeFiles/vecu.dir/src/diagnostics.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/vecu.dir/src/diagnostics.cpp.s: cmake_force
 CMakeFiles/vecu.dir/src/safety.cpp.o: CMakeFiles/vecu.dir/flags.make
 CMakeFiles/vecu.dir/src/safety.cpp.o: /home/papasmurf/Work/Virtual_ECU/src/safety.cpp
 CMakeFiles/vecu.dir/src/safety.cpp.o: CMakeFiles/vecu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/vecu.dir/src/safety.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/vecu.dir/src/safety.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vecu.dir/src/safety.cpp.o -MF CMakeFiles/vecu.dir/src/safety.cpp.o.d -o CMakeFiles/vecu.dir/src/safety.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/safety.cpp
 
 CMakeFiles/vecu.dir/src/safety.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/vecu.dir/src/safety.cpp.s: cmake_force
 CMakeFiles/vecu.dir/src/watchdog.cpp.o: CMakeFiles/vecu.dir/flags.make
 CMakeFiles/vecu.dir/src/watchdog.cpp.o: /home/papasmurf/Work/Virtual_ECU/src/watchdog.cpp
 CMakeFiles/vecu.dir/src/watchdog.cpp.o: CMakeFiles/vecu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/vecu.dir/src/watchdog.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/vecu.dir/src/watchdog.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vecu.dir/src/watchdog.cpp.o -MF CMakeFiles/vecu.dir/src/watchdog.cpp.o.d -o CMakeFiles/vecu.dir/src/watchdog.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/watchdog.cpp
 
 CMakeFiles/vecu.dir/src/watchdog.cpp.i: cmake_force
@@ -157,6 +171,7 @@ CMakeFiles/vecu.dir/src/watchdog.cpp.s: cmake_force
 vecu_OBJECTS = \
 "CMakeFiles/vecu.dir/src/main.cpp.o" \
 "CMakeFiles/vecu.dir/src/can.cpp.o" \
+"CMakeFiles/vecu.dir/src/signal_manager.cpp.o" \
 "CMakeFiles/vecu.dir/src/scheduler.cpp.o" \
 "CMakeFiles/vecu.dir/src/diagnostics.cpp.o" \
 "CMakeFiles/vecu.dir/src/safety.cpp.o" \
@@ -167,13 +182,14 @@ vecu_EXTERNAL_OBJECTS =
 
 vecu: CMakeFiles/vecu.dir/src/main.cpp.o
 vecu: CMakeFiles/vecu.dir/src/can.cpp.o
+vecu: CMakeFiles/vecu.dir/src/signal_manager.cpp.o
 vecu: CMakeFiles/vecu.dir/src/scheduler.cpp.o
 vecu: CMakeFiles/vecu.dir/src/diagnostics.cpp.o
 vecu: CMakeFiles/vecu.dir/src/safety.cpp.o
 vecu: CMakeFiles/vecu.dir/src/watchdog.cpp.o
 vecu: CMakeFiles/vecu.dir/build.make
 vecu: CMakeFiles/vecu.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable vecu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable vecu"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vecu.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

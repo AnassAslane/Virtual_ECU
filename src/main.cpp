@@ -2,25 +2,27 @@
 #include "diagnostics.hpp"
 #include "safety.hpp"
 #include "scheduler.hpp"
+#include "signal_manager.hpp"
 #include "watchdog.hpp"
 
 #include <atomic>
 #include <chrono>
 #include <csignal>
-#include <cstdint>
 #include <iomanip>
 #include <iostream>
 #include <thread>
-
-using namespace std::chrono_literals;
 
 namespace {
 
 std::atomic<bool> running{true};
 
-void signal_handler(int)
+void signal_handler(int signal)
 {
-    running = false;
+    if (signal == SIGINT ||
+        signal == SIGTERM)
+    {
+        running = false;
+    }
 }
 
 } // namespace
@@ -30,176 +32,116 @@ int main()
     std::signal(SIGINT, signal_handler);
     std::signal(SIGTERM, signal_handler);
 
-    std::cout << "====================================\n";
-    std::cout << "       VECU-X Virtual ECU\n";
-    std::cout << "====================================\n";
+    std::cout
+        << "========================================\n"
+        << "       Virtual ECU - VECU\n"
+        << "========================================\n";
 
     /*
-     * -------------------------------------------------------
-     * Core ECU components
-     * -------------------------------------------------------
+     * ----------------------------------------------------
+     * Initialize components
+     * ----------------------------------------------------
      */
 
     vecu::CanBus can;
+    vecu::SignalManager signal_manager;
     vecu::SafetyManager safety;
     vecu::Diagnostics diagnostics;
     vecu::Watchdog watchdog(500);
     vecu::Scheduler scheduler;
 
     /*
-     * -------------------------------------------------------
-     * CAN initialization
-     * -------------------------------------------------------
+     * ----------------------------------------------------
+     * Open CAN interface
+     * ----------------------------------------------------
      */
 
-    if (!can.open("vcan0")) {
-
+    if (!can.open("vcan0"))
+    {
         std::cerr
-            << "[ECU] CAN initialization failed\n";
+            << "[VECU] Failed to open vcan0\n";
 
-        safety.set_fault(
-            vecu::FaultCode::CAN_COMMUNICATION);
-
-        diagnostics.record_fault(
-            vecu::FaultCode::CAN_COMMUNICATION);
-
-    } else {
-
-        std::cout
-            << "[ECU] CAN initialized successfully\n";
+        return 1;
     }
 
     /*
-     * -------------------------------------------------------
-     * Watchdog task registration
-     * -------------------------------------------------------
+     * ----------------------------------------------------
+     * Register watchdog tasks
+     * ----------------------------------------------------
      */
 
-    watchdog.register_task("CAN_TX");
+    watchdog.register_task("CAN_RX");
     watchdog.register_task("SAFETY");
     watchdog.register_task("DIAGNOSTICS");
 
     /*
-     * -------------------------------------------------------
-     * ECU state
-     * -------------------------------------------------------
-     */
-
-    vecu::EngineData engine_data;
-
-    engine_data.rpm = 1000;
-    engine_data.speed_kmh = 0;
-    engine_data.throttle_percent = 10;
-
-    /*
-     * -------------------------------------------------------
-     * Task 1:
-     * CAN transmission
+     * ----------------------------------------------------
+     * CAN RX task
      *
-     * 100 Hz is common for many fast control signals,
-     * but this demo uses 10 Hz for engine data.
-     * -------------------------------------------------------
+     * Receives messages from the vehicle simulator.
+     * ----------------------------------------------------
      */
 
     scheduler.add_task(
-        "CAN_TX",
-        100ms,
-        [&]() {
-
-            if (!can.is_open()) {
-                safety.set_fault(
-                    vecu::FaultCode::CAN_COMMUNICATION);
-
-                diagnostics.record_fault(
-                    vecu::FaultCode::CAN_COMMUNICATION);
-
-                return;
-            }
+        "CAN_RX",
+        std::chrono::milliseconds(10),
+        [&]()
+        {
+            vecu::CanFrame frame;
 
             /*
-             * Simple simulated engine evolution.
+             * We use a zero timeout because the scheduler
+             * itself controls when this task executes.
              */
+            while (can.receive(frame, 0))
+            {
+                const bool decoded =
+                    signal_manager.process_frame(frame);
 
-            if (engine_data.speed_kmh < 120) {
-                ++engine_data.speed_kmh;
+                if (!decoded)
+                {
+                    std::cout
+                        << "[CAN] Unknown/invalid frame "
+                        << "ID=0x"
+                        << std::hex
+                        << frame.id
+                        << std::dec
+                        << " DLC="
+                        << static_cast<int>(frame.dlc)
+                        << '\n';
+                }
             }
 
-            if (engine_data.rpm < 3500) {
-                engine_data.rpm += 25;
-            }
-
-            if (engine_data.throttle_percent < 80) {
-                ++engine_data.throttle_percent;
-            }
-
-            if (!can.send_engine_data(engine_data)) {
-
-                safety.set_fault(
-                    vecu::FaultCode::CAN_COMMUNICATION);
-
-                diagnostics.record_fault(
-                    vecu::FaultCode::CAN_COMMUNICATION);
-
-            } else {
-
-                watchdog.kick("CAN_TX");
-
-                std::cout
-                    << "[CAN TX] RPM="
-                    << engine_data.rpm
-                    << " SPEED="
-                    << engine_data.speed_kmh
-                    << " km/h THROTTLE="
-                    << static_cast<int>(
-                        engine_data.throttle_percent)
-                    << "%\n";
-            }
+            watchdog.kick("CAN_RX");
         });
 
     /*
-     * -------------------------------------------------------
-     * Task 2:
-     * Safety monitoring
-     *
-     * Runs every 50 ms.
-     * -------------------------------------------------------
+     * ----------------------------------------------------
+     * Safety task
+     * ----------------------------------------------------
      */
 
     scheduler.add_task(
         "SAFETY",
-        50ms,
-        [&]() {
+        std::chrono::milliseconds(50),
+        [&]()
+        {
+            const vecu::VehicleSignals& signals =
+                signal_manager.get_signals();
 
             /*
-             * Example plausibility check.
+             * Overspeed detection.
              */
-
-            if (engine_data.throttle_percent > 100) {
-
+            if (signals.speed_kmh > 130.0F)
+            {
                 safety.set_fault(
-                    vecu::FaultCode::INVALID_ENGINE_DATA);
+                    vecu::FaultCode::OVERSPEED);
 
                 diagnostics.record_fault(
-                    vecu::FaultCode::INVALID_ENGINE_DATA);
+                    vecu::FaultCode::OVERSPEED);
             }
-
-            /*
-             * Example overspeed threshold.
-             *
-             * This is a project-defined demonstration
-             * threshold, not a vehicle safety requirement.
-             */
-
-            if (engine_data.speed_kmh > 130) {
-
-                safety.set_fault(
-                    vecu::FaultCode::OVERSPEED);
-
-                diagnostics.record_fault(
-                    vecu::FaultCode::OVERSPEED);
-
-            } else {
-
+            else
+            {
                 safety.clear_fault(
                     vecu::FaultCode::OVERSPEED);
 
@@ -207,135 +149,152 @@ int main()
                     vecu::FaultCode::OVERSPEED);
             }
 
+            /*
+             * Basic signal validation.
+             */
+            if (signals.rpm > 8000U)
+            {
+                safety.set_fault(
+                    vecu::FaultCode::INVALID_ENGINE_DATA);
+
+                diagnostics.record_fault(
+                    vecu::FaultCode::INVALID_ENGINE_DATA);
+            }
+            else
+            {
+                safety.clear_fault(
+                    vecu::FaultCode::INVALID_ENGINE_DATA);
+
+                diagnostics.clear_fault(
+                    vecu::FaultCode::INVALID_ENGINE_DATA);
+            }
+
+            /*
+             * Update overall safety state.
+             */
             safety.update_state();
 
             watchdog.kick("SAFETY");
         });
 
     /*
-     * -------------------------------------------------------
-     * Task 3:
-     * Diagnostic monitoring
-     *
-     * Runs every 100 ms.
-     * -------------------------------------------------------
+     * ----------------------------------------------------
+     * Diagnostics task
+     * ----------------------------------------------------
      */
 
     scheduler.add_task(
         "DIAGNOSTICS",
-        100ms,
-        [&]() {
+        std::chrono::milliseconds(100),
+        [&]()
+        {
+            static vecu::SafetyState previous_state =
+                vecu::SafetyState::INIT;
 
-            const auto dtcs =
-                diagnostics.get_dtcs();
+            const vecu::SafetyState current_state =
+                safety.get_state();
 
-            if (!dtcs.empty()) {
-
+            if (current_state != previous_state)
+            {
                 std::cout
-                    << "[DTC] Active faults: "
-                    << dtcs.size()
+                    << "[SAFETY] State: "
+                    << vecu::SafetyManager::state_to_string(
+                           previous_state)
+                    << " -> "
+                    << vecu::SafetyManager::state_to_string(
+                           current_state)
                     << '\n';
 
-                for (const auto& dtc : dtcs) {
-
-                    std::cout
-                        << "       0x"
-                        << std::hex
-                        << std::uppercase
-                        << dtc.code
-                        << std::dec
-                        << " "
-                        << vecu::SafetyManager::
-                           fault_to_string(
-                               dtc.fault)
-                        << '\n';
-                }
+                previous_state = current_state;
             }
+
+            const vecu::VehicleSignals& signals =
+                signal_manager.get_signals();
+
+            std::cout
+                << std::fixed
+                << std::setprecision(1)
+                << "[VECU] "
+                << "Speed="
+                << signals.speed_kmh
+                << " km/h | "
+                << "RPM="
+                << signals.rpm
+                << " | "
+                << "Throttle="
+                << static_cast<int>(
+                       signals.throttle_percent)
+                << "% | "
+                << "Brake="
+                << static_cast<int>(
+                       signals.brake_percent)
+                << "% | "
+                << "Gear="
+                << static_cast<int>(
+                       signals.gear)
+                << '\n';
 
             watchdog.kick("DIAGNOSTICS");
         });
 
     /*
-     * -------------------------------------------------------
-     * Task 4:
-     * Watchdog supervision
-     *
-     * The watchdog itself must run faster than the
-     * monitored task timeout.
-     * -------------------------------------------------------
+     * ----------------------------------------------------
+     * Start scheduler
+     * ----------------------------------------------------
      */
-
-    scheduler.add_task(
-        "WATCHDOG",
-        100ms,
-        [&]() {
-
-            if (!watchdog.is_healthy()) {
-
-                const std::string failed =
-                    watchdog.get_failed_task();
-
-                std::cerr
-                    << "[WATCHDOG] TIMEOUT: "
-                    << failed
-                    << '\n';
-
-                safety.set_fault(
-                    vecu::FaultCode::WATCHDOG_TIMEOUT);
-
-                diagnostics.record_fault(
-                    vecu::FaultCode::WATCHDOG_TIMEOUT);
-            }
-        });
-
-    /*
-     * -------------------------------------------------------
-     * Start ECU scheduler
-     * -------------------------------------------------------
-     */
-
-    safety.update_state();
-
-    std::cout
-        << "[ECU] Initial safety state: "
-        << vecu::SafetyManager::state_to_string(
-               safety.get_state())
-        << '\n';
 
     scheduler.start();
 
+    std::cout
+        << "[VECU] Scheduler started\n"
+        << "[VECU] Waiting for vehicle CAN data...\n"
+        << "[VECU] Press Ctrl+C to stop\n";
+
     /*
-     * -------------------------------------------------------
+     * ----------------------------------------------------
      * Main supervision loop
-     * -------------------------------------------------------
+     * ----------------------------------------------------
      */
 
-    while (running) {
+    while (running)
+    {
+        std::this_thread::sleep_for(
+            std::chrono::milliseconds(100));
 
-        std::this_thread::sleep_for(1s);
+        if (!watchdog.is_healthy())
+        {
+            const std::string failed_task =
+                watchdog.get_failed_task();
 
-        std::cout
-            << "[ECU] Safety state: "
-            << vecu::SafetyManager::state_to_string(
-                   safety.get_state())
-            << '\n';
+            std::cerr
+                << "[WATCHDOG] Task timeout: "
+                << failed_task
+                << '\n';
+
+            safety.set_fault(
+                vecu::FaultCode::WATCHDOG_TIMEOUT);
+
+            diagnostics.record_fault(
+                vecu::FaultCode::WATCHDOG_TIMEOUT);
+
+            safety.update_state();
+        }
     }
 
     /*
-     * -------------------------------------------------------
+     * ----------------------------------------------------
      * Shutdown
-     * -------------------------------------------------------
+     * ----------------------------------------------------
      */
 
     std::cout
-        << "[ECU] Shutting down...\n";
+        << "\n[VECU] Shutting down...\n";
 
     scheduler.stop();
-
     can.close();
 
     std::cout
-        << "[ECU] Shutdown complete\n";
+        << "[VECU] Shutdown complete\n";
 
     return 0;
 }

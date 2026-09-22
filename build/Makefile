@@ -129,6 +129,43 @@ vecu/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vecu.dir/build.make CMakeFiles/vecu.dir/build
 .PHONY : vecu/fast
 
+#=============================================================================
+# Target rules for targets named vehicle_simulator
+
+# Build rule for target.
+vehicle_simulator: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vehicle_simulator
+.PHONY : vehicle_simulator
+
+# fast build rule for target.
+vehicle_simulator/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_simulator.dir/build.make CMakeFiles/vehicle_simulator.dir/build
+.PHONY : vehicle_simulator/fast
+
+simulator/vehicule_simulator.o: simulator/vehicule_simulator.cpp.o
+.PHONY : simulator/vehicule_simulator.o
+
+# target to build an object file
+simulator/vehicule_simulator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_simulator.dir/build.make CMakeFiles/vehicle_simulator.dir/simulator/vehicule_simulator.cpp.o
+.PHONY : simulator/vehicule_simulator.cpp.o
+
+simulator/vehicule_simulator.i: simulator/vehicule_simulator.cpp.i
+.PHONY : simulator/vehicule_simulator.i
+
+# target to preprocess a source file
+simulator/vehicule_simulator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_simulator.dir/build.make CMakeFiles/vehicle_simulator.dir/simulator/vehicule_simulator.cpp.i
+.PHONY : simulator/vehicule_simulator.cpp.i
+
+simulator/vehicule_simulator.s: simulator/vehicule_simulator.cpp.s
+.PHONY : simulator/vehicule_simulator.s
+
+# target to generate assembly for a file
+simulator/vehicule_simulator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_simulator.dir/build.make CMakeFiles/vehicle_simulator.dir/simulator/vehicule_simulator.cpp.s
+.PHONY : simulator/vehicule_simulator.cpp.s
+
 src/can.o: src/can.cpp.o
 .PHONY : src/can.o
 
@@ -249,6 +286,30 @@ src/scheduler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vecu.dir/build.make CMakeFiles/vecu.dir/src/scheduler.cpp.s
 .PHONY : src/scheduler.cpp.s
 
+src/signal_manager.o: src/signal_manager.cpp.o
+.PHONY : src/signal_manager.o
+
+# target to build an object file
+src/signal_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vecu.dir/build.make CMakeFiles/vecu.dir/src/signal_manager.cpp.o
+.PHONY : src/signal_manager.cpp.o
+
+src/signal_manager.i: src/signal_manager.cpp.i
+.PHONY : src/signal_manager.i
+
+# target to preprocess a source file
+src/signal_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vecu.dir/build.make CMakeFiles/vecu.dir/src/signal_manager.cpp.i
+.PHONY : src/signal_manager.cpp.i
+
+src/signal_manager.s: src/signal_manager.cpp.s
+.PHONY : src/signal_manager.s
+
+# target to generate assembly for a file
+src/signal_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vecu.dir/build.make CMakeFiles/vecu.dir/src/signal_manager.cpp.s
+.PHONY : src/signal_manager.cpp.s
+
 src/watchdog.o: src/watchdog.cpp.o
 .PHONY : src/watchdog.o
 
@@ -282,6 +343,10 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vecu"
+	@echo "... vehicle_simulator"
+	@echo "... simulator/vehicule_simulator.o"
+	@echo "... simulator/vehicule_simulator.i"
+	@echo "... simulator/vehicule_simulator.s"
 	@echo "... src/can.o"
 	@echo "... src/can.i"
 	@echo "... src/can.s"
@@ -297,6 +362,9 @@ help:
 	@echo "... src/scheduler.o"
 	@echo "... src/scheduler.i"
 	@echo "... src/scheduler.s"
+	@echo "... src/signal_manager.o"
+	@echo "... src/signal_manager.i"
+	@echo "... src/signal_manager.s"
 	@echo "... src/watchdog.o"
 	@echo "... src/watchdog.i"
 	@echo "... src/watchdog.s"

@@ -1,6 +1,7 @@
 CMakeFiles/vecu.dir/src/main.cpp.o: \
  /home/papasmurf/Work/Virtual_ECU/src/main.cpp /usr/include/stdc-predef.h \
- /home/papasmurf/Work/Virtual_ECU/src/can.hpp /usr/include/c++/13/cstdint \
+ /home/papasmurf/Work/Virtual_ECU/include/can.hpp \
+ /usr/include/c++/13/cstdint \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -117,8 +118,8 @@ CMakeFiles/vecu.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /home/papasmurf/Work/Virtual_ECU/src/diagnostics.hpp \
- /home/papasmurf/Work/Virtual_ECU/src/safety.hpp \
+ /home/papasmurf/Work/Virtual_ECU/include/diagnostics.hpp \
+ /home/papasmurf/Work/Virtual_ECU/include/safety.hpp \
  /usr/include/c++/13/mutex /usr/include/c++/13/exception \
  /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
@@ -155,7 +156,7 @@ CMakeFiles/vecu.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
- /home/papasmurf/Work/Virtual_ECU/src/scheduler.hpp \
+ /home/papasmurf/Work/Virtual_ECU/include/scheduler.hpp \
  /usr/include/c++/13/atomic /usr/include/c++/13/bits/atomic_base.h \
  /usr/include/c++/13/bits/atomic_lockfree_defines.h \
  /usr/include/c++/13/chrono /usr/include/c++/13/functional \
@@ -174,7 +175,8 @@ CMakeFiles/vecu.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/std_thread.h \
  /usr/include/c++/13/bits/unique_ptr.h \
  /usr/include/c++/13/bits/this_thread_sleep.h \
- /home/papasmurf/Work/Virtual_ECU/src/watchdog.hpp \
+ /home/papasmurf/Work/Virtual_ECU/include/signal_manager.hpp \
+ /home/papasmurf/Work/Virtual_ECU/include/watchdog.hpp \
  /usr/include/c++/13/csignal /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \

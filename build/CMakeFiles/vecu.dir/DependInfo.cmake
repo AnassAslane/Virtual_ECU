@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/papasmurf/Work/Virtual_ECU/src/main.cpp" "CMakeFiles/vecu.dir/src/main.cpp.o" "gcc" "CMakeFiles/vecu.dir/src/main.cpp.o.d"
   "/home/papasmurf/Work/Virtual_ECU/src/safety.cpp" "CMakeFiles/vecu.dir/src/safety.cpp.o" "gcc" "CMakeFiles/vecu.dir/src/safety.cpp.o.d"
   "/home/papasmurf/Work/Virtual_ECU/src/scheduler.cpp" "CMakeFiles/vecu.dir/src/scheduler.cpp.o" "gcc" "CMakeFiles/vecu.dir/src/scheduler.cpp.o.d"
+  "/home/papasmurf/Work/Virtual_ECU/src/signal_manager.cpp" "CMakeFiles/vecu.dir/src/signal_manager.cpp.o" "gcc" "CMakeFiles/vecu.dir/src/signal_manager.cpp.o.d"
   "/home/papasmurf/Work/Virtual_ECU/src/watchdog.cpp" "CMakeFiles/vecu.dir/src/watchdog.cpp.o" "gcc" "CMakeFiles/vecu.dir/src/watchdog.cpp.o.d"
   )
 

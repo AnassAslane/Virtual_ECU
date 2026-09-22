@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/papasmurf/Work/Virtual_ECU/build
 
 # The main recursive "all" target.
 all: CMakeFiles/vecu.dir/all
+all: CMakeFiles/vehicle_simulator.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/vecu.dir/clean
+clean: CMakeFiles/vehicle_simulator.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -81,12 +83,12 @@ clean: CMakeFiles/vecu.dir/clean
 CMakeFiles/vecu.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vecu.dir/build.make CMakeFiles/vecu.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vecu.dir/build.make CMakeFiles/vecu.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target vecu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target vecu"
 .PHONY : CMakeFiles/vecu.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vecu.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/papasmurf/Work/Virtual_ECU/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/papasmurf/Work/Virtual_ECU/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/vecu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/papasmurf/Work/Virtual_ECU/build/CMakeFiles 0
 .PHONY : CMakeFiles/vecu.dir/rule
@@ -99,6 +101,32 @@ vecu: CMakeFiles/vecu.dir/rule
 CMakeFiles/vecu.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vecu.dir/build.make CMakeFiles/vecu.dir/clean
 .PHONY : CMakeFiles/vecu.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/vehicle_simulator.dir
+
+# All Build rule for target.
+CMakeFiles/vehicle_simulator.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_simulator.dir/build.make CMakeFiles/vehicle_simulator.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_simulator.dir/build.make CMakeFiles/vehicle_simulator.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles --progress-num=9,10 "Built target vehicle_simulator"
+.PHONY : CMakeFiles/vehicle_simulator.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/vehicle_simulator.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/papasmurf/Work/Virtual_ECU/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/vehicle_simulator.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/papasmurf/Work/Virtual_ECU/build/CMakeFiles 0
+.PHONY : CMakeFiles/vehicle_simulator.dir/rule
+
+# Convenience name for target.
+vehicle_simulator: CMakeFiles/vehicle_simulator.dir/rule
+.PHONY : vehicle_simulator
+
+# clean rule for target.
+CMakeFiles/vehicle_simulator.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_simulator.dir/build.make CMakeFiles/vehicle_simulator.dir/clean
+.PHONY : CMakeFiles/vehicle_simulator.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

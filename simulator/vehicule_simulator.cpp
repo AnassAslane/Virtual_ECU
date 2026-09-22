@@ -528,6 +528,7 @@ void encode_vehicle_status(
  * Main simulator
  * ------------------------------------------------------------
  */
+}
 
 int main()
 {

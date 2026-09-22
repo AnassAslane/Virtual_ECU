@@ -13,6 +13,12 @@
 },
 {
   "directory": "/home/papasmurf/Work/Virtual_ECU/build",
+  "command": "/usr/bin/c++  -I/home/papasmurf/Work/Virtual_ECU/include -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vecu.dir/src/signal_manager.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/signal_manager.cpp",
+  "file": "/home/papasmurf/Work/Virtual_ECU/src/signal_manager.cpp",
+  "output": "CMakeFiles/vecu.dir/src/signal_manager.cpp.o"
+},
+{
+  "directory": "/home/papasmurf/Work/Virtual_ECU/build",
   "command": "/usr/bin/c++  -I/home/papasmurf/Work/Virtual_ECU/include -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vecu.dir/src/scheduler.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/scheduler.cpp",
   "file": "/home/papasmurf/Work/Virtual_ECU/src/scheduler.cpp",
   "output": "CMakeFiles/vecu.dir/src/scheduler.cpp.o"
@@ -34,5 +40,11 @@
   "command": "/usr/bin/c++  -I/home/papasmurf/Work/Virtual_ECU/include -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vecu.dir/src/watchdog.cpp.o -c /home/papasmurf/Work/Virtual_ECU/src/watchdog.cpp",
   "file": "/home/papasmurf/Work/Virtual_ECU/src/watchdog.cpp",
   "output": "CMakeFiles/vecu.dir/src/watchdog.cpp.o"
+},
+{
+  "directory": "/home/papasmurf/Work/Virtual_ECU/build",
+  "command": "/usr/bin/c++   -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -o CMakeFiles/vehicle_simulator.dir/simulator/vehicule_simulator.cpp.o -c /home/papasmurf/Work/Virtual_ECU/simulator/vehicule_simulator.cpp",
+  "file": "/home/papasmurf/Work/Virtual_ECU/simulator/vehicule_simulator.cpp",
+  "output": "CMakeFiles/vehicle_simulator.dir/simulator/vehicule_simulator.cpp.o"
 }
 ]

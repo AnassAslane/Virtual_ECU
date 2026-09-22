@@ -1,7 +1,7 @@
 CMakeFiles/vecu.dir/src/safety.cpp.o: \
  /home/papasmurf/Work/Virtual_ECU/src/safety.cpp \
  /usr/include/stdc-predef.h \
- /home/papasmurf/Work/Virtual_ECU/src/safety.hpp \
+ /home/papasmurf/Work/Virtual_ECU/include/safety.hpp \
  /usr/include/c++/13/cstdint \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

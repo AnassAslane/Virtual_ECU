@@ -1,3 +1,4 @@
 /home/papasmurf/Work/Virtual_ECU/build/CMakeFiles/vecu.dir
+/home/papasmurf/Work/Virtual_ECU/build/CMakeFiles/vehicle_simulator.dir
 /home/papasmurf/Work/Virtual_ECU/build/CMakeFiles/edit_cache.dir
 /home/papasmurf/Work/Virtual_ECU/build/CMakeFiles/rebuild_cache.dir

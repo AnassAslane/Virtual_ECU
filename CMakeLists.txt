@@ -14,6 +14,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_executable(vecu
     src/main.cpp
     src/can.cpp
+    src/signal_manager.cpp
     src/scheduler.cpp
     src/diagnostics.cpp
     src/safety.cpp
@@ -38,8 +39,9 @@ target_link_libraries(vecu
     PRIVATE
         pthread
 )
+
 add_executable(vehicle_simulator
-    simulator/vehicle_simulator.cpp
+    simulator/vehicule_simulator.cpp
 )
 
 target_compile_options(vehicle_simulator
